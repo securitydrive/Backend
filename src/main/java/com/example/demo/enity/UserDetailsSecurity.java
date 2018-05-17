@@ -50,7 +50,7 @@ public class UserDetailsSecurity implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.login(username).getData();
         log.info("User : {}", user);
-        return new Login(username, user.getUserPassword(), true, true,
+        return new Login(username, user.getPassword(), true, true,
                 true, true, getGrantedAuthorities(user));
     }
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.UserCarMapper" >
+    <resultMap id="UserResult" type="com.example.demo.enity.UserCar" >
+        <result property="id" column="id" />
+        <result property="user_id" column="user_id" />
+        <result property="car_id" column="car_id" />
+        <result property="car_type" column="car_type" />
+        <result property="car_number" column="car_number" />
+        <result property="note" column="note" />
+        <result property="car_img" column="car_img" />
+        <result property="obd_number" column="obd_number" />
+        <result property="usual_site" column="usual_site" />
+        <result property="usual_des" column="usual_des" />
+        <result property="create_at" column="create_at" />
+        <result property="update_at" column="update_at" />
+    </resultMap>
+</mapper>
