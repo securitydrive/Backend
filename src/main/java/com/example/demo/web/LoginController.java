@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.enity.User;
 import com.example.demo.service.user.UserService;
 import com.example.demo.utils.ResultData;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,7 @@ public class LoginController {
      * @return
      */
     @PostMapping(value = "/register")
-    public ResultData register(@ModelAttribute RegisterUser user) {
+    public ResultData register(@ModelAttribute User user) {
         log.info("RegisterUser : {}", user);
         return userService.register(new ResultData<>(user));
     }
@@ -41,7 +42,7 @@ public class LoginController {
      * @return
      */
     @PostMapping(value = "/findPwd")
-    public ResultData findPwd(@RequestBody RegisterUser user) {
+    public ResultData findPwd(@RequestBody User user) {
         return userService.findPwd(new ResultData<>(user));
     }
 

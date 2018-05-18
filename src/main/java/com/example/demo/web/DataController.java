@@ -1,8 +1,11 @@
 package com.example.demo.web;
 
 import com.example.demo.enity.UserCar;
+import com.example.demo.service.car.CarService;
 import com.example.demo.utils.ResultData;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +15,10 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @Controller
 public class DataController {
+
+    @Qualifier(value = "CarService")
+    @Autowired
+    private CarService carService;
 
     /**
      * 根据 user_id 获取对应的设备信息

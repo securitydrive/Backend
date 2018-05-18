@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.enity.UserDetailsSecurity;
+import com.example.demo.service.user.impl.UserSecurityLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,11 +23,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
     public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsSecurity userDetailsSecurity;
+    private UserSecurityLogin userSecurityLogin;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsSecurity);
+        auth.userDetailsService(userSecurityLogin);
     }
 
     /**

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.mapper.DataDealMapper" >
+<mapper namespace="com.example.demo.enity.mapper.DataDealMapper" >
     <resultMap id="UserResult" type="com.example.demo.enity.DataDeal" >
         <result property="id" column="id" />
-        <result property="data_id" column="data_id" />
-        <result property="deal_id" column="deal_id" />
+        <result property="dataId" column="data_id" />
+        <result property="dealId" column="deal_id" />
         <result property="longitude" column="long" />
         <result property="lat" column="lat" />
-        <result property="car_id" column="car_id" />
-        <result property="car_speed" column="car_speed" />
-        <result property="car_acc" column="car_acc" />
-        <result property="gas_use" column="gas_use" />
-        <result property="create_at" column="create_at" />
-        <result property="update_at" column="update_at" />
+        <result property="carId" column="car_id" />
+        <result property="carSpeed" column="car_speed" />
+        <result property="carAcc" column="car_acc" />
+        <result property="gasUse" column="gas_use" />
+        <result property="createAt" column="create_at" />
+        <result property="updateAt" column="update_at" />
     </resultMap>
 </mapper>

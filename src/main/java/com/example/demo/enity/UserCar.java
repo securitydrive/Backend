@@ -8,16 +8,16 @@ import java.util.Date;
 public class UserCar {
 
     private int id;
-    private String user_id;
-    private String car_id;
-    private String car_type;
-    private String car_number;
+    private String userId;
+    private String carId;
+    private String carType;
+    private String carNumber;
     private String note;
-    private String car_img;
-    private String obd_number;
-    private String usual_site;
-    private String usual_des;
-    private Date create_at;
-    private Date update_at;
+    private String carImg;
+    private String obdNumber;
+    private String usualSite;
+    private String usualDes;
+    private Date createAt;
+    private Date updateAt;
 
 }

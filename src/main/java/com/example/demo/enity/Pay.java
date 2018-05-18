@@ -8,12 +8,12 @@ import java.util.Date;
 public class Pay {
 
     private int id;
-    private String user_id;
-    private String trade_id;
+    private String userId;
+    private String tradeId;
     private int price;
-    private String car_number;
+    private String carNumber;
     private String info;
-    private Date created_at;
-    private Date updated_at;
+    private Date createdAt;
+    private Date updatedAt;
 
 }

@@ -1,7 +1,7 @@
-package com.example.demo.service.code.impl;
+package com.example.demo.service.user.impl;
 
 import com.example.demo.enity.User;
-import com.example.demo.service.code.SendAuthCodeService;
+import com.example.demo.service.user.SendAuthCodeService;
 import com.example.demo.utils.ResultData;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -54,7 +54,7 @@ public class SendAuthCodeServiceImpl implements SendAuthCodeService {
     }
 
     @Override
-    public ResultData<String> sendCode(User user, HttpSession session) {
+    public ResultData<? extends Object, String> sendCode(User user, HttpSession session) {
         Map<String, Object> jwt = new HashMap<>();
         jwt.put("code", MakeAuthCode(user.getUserPhone(), session));
         VerificationCodeExpired(session);

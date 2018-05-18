@@ -8,17 +8,17 @@ import java.util.Date;
 public class DataResult {
 
     private int id;
-    private String result_id;
-    private String data_id;
-    private String deal_id;
-    private String result_img;
+    private String resultId;
+    private String dataId;
+    private String dealId;
+    private String resultImg;
     private String longitude;
     private String lat;
-    private String car_id;
-    private float car_speed;
-    private float car_acc;
-    private float gas_use;
-    private Date create_at;
-    private Date update_at;
+    private String carId;
+    private float carSpeed;
+    private float carAcc;
+    private float gasUse;
+    private Date createAt;
+    private Date updateAt;
 
 }

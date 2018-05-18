@@ -1,6 +1,7 @@
-package com.example.demo.mapper;
+package com.example.demo.enity.mapper;
 
 import com.example.demo.enity.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -9,17 +10,28 @@ import org.apache.ibatis.annotations.Param;
  * </pre>
  * @author tensor
  */
+@Mapper
 public interface UserMapper {
 
     /**
      *
-     * @param userName
+     * @param username
      * @return
      */
-    User login(@Param(value = "userName") String userName);
+    User login(@Param(value = "username") String username);
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     Boolean register(@Param(value = "user") User user);
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     User getUserInfo(@Param(value = "user") User user);
 
 }

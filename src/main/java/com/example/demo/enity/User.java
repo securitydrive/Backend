@@ -11,14 +11,14 @@ import java.util.Date;
 public class User {
 
     private int id;
-    private String user_id;
+    private String userId;
     private String salt;
-    private String username;
-    private String password;
-    private String user_headimg;
-    private String phone;
-    private String email;
-    private Date create_at;
-    private Date update_at;
+    private String userName;
+    private String userPwd;
+    private String userHeadimg;
+    private String userPhone;
+    private String userEmail;
+    private Date createAt;
+    private Date updateAt;
 
 }

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.mapper.UserMapper" >
+<mapper namespace="com.example.demo.enity.mapper.UserMapper" >
     <resultMap id="UserResult" type="com.example.demo.enity.User" >
         <id property="id" column="id" />
-        <result property="user_id" column="user_id" />
+        <result property="userId" column="user_id" />
         <result property="salt" column="salt" />
-        <result property="username" column="user_name" />
-        <result property="password" column="user_pwd" />
-        <result property="user_headimg" column="user_headimg" />
-        <result property="phone" column="user_phone" />
-        <result property="email" column="user_email" />
-        <result property="create_at" column="create_at" />
-        <result property="update_at" column="update_at" />
+        <result property="userName" column="user_name" />
+        <result property="userPwd" column="user_pwd" />
+        <result property="userHeadimg" column="user_headimg" />
+        <result property="userPhone" column="user_phone" />
+        <result property="userEmail" column="user_email" />
+        <result property="createAt" column="create_at" />
+        <result property="updateAt" column="update_at" />
     </resultMap>
     
     <select id="login" resultType="com.example.demo.enity.User">
-        select username, userpassword from User where username=#{userName}
+        select user_name, user_pwd from app_user_info where user_name=#{username}
     </select>
 
     <insert id="register" useGeneratedKeys="true">
-        insert into User(username, userpassword) values (#{user.userName}, #{user.userPassword})
+        insert into app_user_info(user_id, salt, user_name, user_pwd) values ('123', '123456', #{user.userName}, #{user.userPwd})
     </insert>
 
     <select id="getUserInfo" resultType="com.example.demo.enity.User">
-        select username from User where username=#{user.userName}
+        select user_name from app_user_info where user_name=#{user.userName}
     </select>
 
 </mapper>

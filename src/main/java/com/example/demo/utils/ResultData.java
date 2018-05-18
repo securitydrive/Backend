@@ -9,9 +9,9 @@ import lombok.Data;
  * @author tensor
  */
 @Data
-public class ResultData<T> {
+public class ResultData<V, T> {
 
-    private Boolean result;
+    private V result;
     private String response;
     private T data;
 
@@ -23,7 +23,7 @@ public class ResultData<T> {
         this.data = data;
     }
 
-    public ResultData(Boolean result, String response, T data) {
+    public ResultData(V result, String response, T data) {
         this.result = result;
         this.response = response;
         this.data = data;

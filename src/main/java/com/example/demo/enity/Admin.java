@@ -8,15 +8,15 @@ import java.util.Date;
 public class Admin {
 
     private int id;
-    private String admin_id;
-    private String admin_pwd;
+    private String adminId;
+    private String adminPwd;
     private String salt;
-    private String admin_name;
-    private String admin_headimg;
-    private String admin_email;
-    private String admin_phone;
+    private String adminName;
+    private String adminHeadimg;
+    private String adminEemail;
+    private String admiPphone;
     private int status;
-    private Date create_at;
-    private Date update_at;
+    private Date createAt;
+    private Date updateAt;
 
 }

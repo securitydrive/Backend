@@ -1,4 +1,4 @@
-package com.example.demo.mapper;
+package com.example.demo.enity.mapper;
 
 public interface DataResultMapper {
 }

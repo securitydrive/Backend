@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.enity.UserDetailsSecurity;
+import com.example.demo.service.user.impl.UserSecurityLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -55,7 +55,7 @@ public class OAuth2ServerConfiguration {
                     .anonymous()
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/test/**").authenticated();
+                    .antMatchers("/test/**", "/api/**").authenticated();
         }
 
     }
@@ -65,7 +65,7 @@ public class OAuth2ServerConfiguration {
     protected static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
         @Autowired
-        private UserDetailsSecurity userDetailsSecurity;
+        private UserSecurityLogin userSecurityLogin;
         @Autowired
         AuthenticationManager authenticationManager;
         @Autowired
@@ -103,7 +103,7 @@ public class OAuth2ServerConfiguration {
             endpoints
                     .tokenStore(new RedisTokenStore(redisConnectionFactory))
                     .authenticationManager(authenticationManager)
-                    .userDetailsService(userDetailsSecurity)
+                    .userDetailsService(userSecurityLogin)
                     .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
                     .reuseRefreshTokens(true);
         }

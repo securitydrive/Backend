@@ -12,18 +12,18 @@ public interface UserService {
      *
      * @return
      */
-    ResultData<User> login(String userName);
+    ResultData<Object, User> login(String userName);
 
     /**
      *
      * @return
      */
-    ResultData register(ResultData<User> userResultData);
+    ResultData register(ResultData<String, User> userResultData);
 
     /**
      *
      * @return
      */
-    ResultData findPwd(ResultData<User> userResultData);
+    ResultData findPwd(ResultData<Object, User> userResultData);
 
 }

@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 /**
  * @author tensor
  */
-@MapperScan("com.example.demo.mapper")
+@MapperScan("com.example.demo.enity.mapper")
 @EnableAsync
 @SpringBootApplication
 public class DemoApplication {

@@ -1,5 +1,7 @@
-package com.example.demo.enity;
+package com.example.demo.service.user.impl;
 
+import com.example.demo.enity.Login;
+import com.example.demo.enity.User;
 import com.example.demo.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ import java.util.List;
  */
 @Slf4j
 @Component
-public class UserDetailsSecurity implements UserDetailsService {
+public class UserSecurityLogin implements UserDetailsService {
     /**
      * Locates the user based on the username. In the actual implementation, the search
      * may possibly be case sensitive, or case insensitive depending on how the
@@ -50,7 +52,7 @@ public class UserDetailsSecurity implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.login(username).getData();
         log.info("User : {}", user);
-        return new Login(username, user.getPassword(), true, true,
+        return new Login(username, user.getUserPwd(), true, true,
                 true, true, getGrantedAuthorities(user));
     }
 

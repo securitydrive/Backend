@@ -8,11 +8,11 @@ import java.util.Date;
 public class Ads {
 
     private int id;
-    private String ad_id;
-    private String ad_info;
-    private String ad_title;
-    private String ad_content;
-    private Date create_at;
-    private Date update_at;
+    private String adId;
+    private String adInfo;
+    private String adTitle;
+    private String adContent;
+    private Date createAt;
+    private Date updateAt;
 
 }

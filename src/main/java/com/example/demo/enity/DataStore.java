@@ -8,14 +8,14 @@ import java.util.Date;
 public class DataStore {
 
     private int id;
-    private String data_id;
+    private String dataId;
     private String longitude;
     private String lat;
-    private String car_id;
-    private float car_speed;
-    private float car_acc;
-    private float gas_use;
-    private Date create_at;
-    private Date update_at;
+    private String carId;
+    private float carSpeed;
+    private float carAcc;
+    private float gasUse;
+    private Date createAt;
+    private Date updateAt;
 
 }
