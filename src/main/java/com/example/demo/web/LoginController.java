@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.enity.Admin;
 import com.example.demo.enity.User;
 import com.example.demo.service.user.UserService;
 import com.example.demo.utils.ResultData;
@@ -24,6 +25,11 @@ public class LoginController {
     @Qualifier(value = "UserService")
     @Autowired
     private UserService userService;
+
+    @PostMapping(value = "/login")
+    public ResultData login(@ModelAttribute Admin admin) {
+        return null;
+    }
 
     /**
      *

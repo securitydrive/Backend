@@ -19,7 +19,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
     public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -39,10 +38,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
         http
-                .requestMatchers().anyRequest()
-                .and()
                     .authorizeRequests()
-                    .antMatchers("/oauth/*").permitAll();
+                    .antMatchers("/oauth/*", "/").permitAll()
+                    .anyRequest().authenticated()
+                .and()
+                    .formLogin()
+                    .loginPage("/").defaultSuccessUrl("/atta/index").permitAll()
+                .and()
+                    .logout().logoutSuccessUrl("/login").permitAll();
         // @formatter:on
     }
 

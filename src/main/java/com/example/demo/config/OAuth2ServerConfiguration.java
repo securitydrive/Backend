@@ -55,7 +55,7 @@ public class OAuth2ServerConfiguration {
                     .anonymous()
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/test/**", "/api/**").authenticated();
+                    .antMatchers("/test/**", "/api/**", "/atta/**").authenticated();
         }
 
     }
