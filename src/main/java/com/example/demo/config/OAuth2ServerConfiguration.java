@@ -2,21 +2,35 @@ package com.example.demo.config;
 
 import com.example.demo.service.user.impl.UserSecurityLogin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.*;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * <pre>
@@ -29,9 +43,37 @@ public class OAuth2ServerConfiguration {
 
     public static final String DEMO_RESOURCE_ID = "test";
 
+    @Component
+    protected static class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+        /**
+         * Commences an authentication scheme.
+         * <p>
+         * <code>ExceptionTranslationFilter</code> will populate the <code>HttpSession</code>
+         * attribute named
+         * <code>AbstractAuthenticationProcessingFilter.SPRING_SECURITY_SAVED_REQUEST_KEY</code>
+         * with the requested target URL before calling this method.
+         * <p>
+         * Implementations should modify the headers on the <code>ServletResponse</code> as
+         * necessary to commence the authentication process.
+         *
+         * @param request       that resulted in an <code>AuthenticationException</code>
+         * @param response      so that the user agent can begin authentication
+         * @param authException that caused the invocation
+         */
+        @Override
+        public void commence(HttpServletRequest request,
+                             HttpServletResponse response,
+                             AuthenticationException authException) throws IOException, ServletException {
+            response.sendRedirect("/oauth/error");
+        }
+    }
+
     @Configuration
     @EnableResourceServer
     protected static class ResourceSecurityConfiguration extends ResourceServerConfigurerAdapter {
+
+        @Autowired private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
         /**
          *
@@ -50,6 +92,9 @@ public class OAuth2ServerConfiguration {
         @Override
         public void configure(HttpSecurity http) throws Exception {
             http
+                    .exceptionHandling()
+                    .authenticationEntryPoint(customAuthenticationEntryPoint)
+                    .and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                     .and()
                     .anonymous()

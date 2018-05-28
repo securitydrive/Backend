@@ -26,9 +26,9 @@ public class WebMvcAdaperConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("login.html");
-        registry.addViewController("/atta/index").setViewName("manage.html");
-        registry.addViewController("/atta/device").setViewName("charts.html");
+        registry.addViewController("/").setViewName("login");
+        registry.addViewController("/atta/index").setViewName("manage");
+        registry.addViewController("/atta/device").setViewName("charts");
         super.addViewControllers(registry);
     }
 

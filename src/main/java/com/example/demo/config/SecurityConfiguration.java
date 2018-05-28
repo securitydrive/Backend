@@ -39,13 +39,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
         // @formatter:off
         http
                     .authorizeRequests()
-                    .antMatchers("/oauth/*", "/").permitAll()
+                    .antMatchers("/oauth/*", "/login").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
-                    .loginPage("/").defaultSuccessUrl("/atta/index").permitAll()
+                    .loginPage("/login").permitAll()
                 .and()
-                    .logout().logoutSuccessUrl("/login").permitAll();
+                    .logout().permitAll();
         // @formatter:on
     }
 
