@@ -100,7 +100,7 @@ public class OAuth2ServerConfiguration {
                     .anonymous()
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/test/**", "/api/**", "/atta/**").authenticated();
+                    .antMatchers("/test/**", "/api/**").authenticated();
         }
 
     }

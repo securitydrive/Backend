@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -37,6 +38,11 @@ public class LoginController {
     @PostMapping(value = "/login")
     public ResultData login(HttpServletRequest request) {
         log.info(request.getParameter("account"));
+        try {
+            request.login(request.getParameter("account"), request.getParameter("account"));
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
