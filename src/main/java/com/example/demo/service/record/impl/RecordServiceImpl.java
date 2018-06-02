@@ -10,6 +10,8 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 /**
  * @author tensor
  */
@@ -27,5 +29,16 @@ public class RecordServiceImpl implements RecordService {
         list1.add(record.getRecordDimensionality());
         list.add(list1);
         return new ResultData(list);
+    }
+
+    @Override
+    public ResultData getAllDevDistribute() {
+        List<DevRecord> devRecords = recordMapper.getAllDevDistribute();
+        return new ResultData(devRecords.stream().map(devRecord -> {
+            List list = new ArrayList();
+            list.add(devRecord.getRecordDimensionality());
+            list.add(devRecord.getRecordLongitude());
+            return list;
+        }).collect(toList()));
     }
 }

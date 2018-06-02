@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.enity.mapper.DevRecordMapper" >
-    <resultMap id="UserResult" type="com.example.demo.enity.DevRecord" >
+    <resultMap id="DevRecord" type="com.example.demo.enity.DevRecord" >
         <id property="recordId" column="record_id" />
         <result property="recordTime" column="record_time" />
         <result property="recordLongitude" column="record_longitude" />
@@ -13,6 +13,10 @@
     </resultMap>
 
     <select id="getLastDevLoc" resultType="com.example.demo.enity.DevRecord">
-        select record_longitude, record_dimensionality from dev_record where record_id in (select max(record_id) from dev_record);
+        select record_longitude, record_dimensionality from dev_record order by `record_time` desc limit 1;
+    </select>
+    
+    <select id="getAllDevDistribute" resultMap="DevRecord">
+        select record_longitude, record_dimensionality from dev_record where record_id in (select record_id from dev_record group by record_id) order by record_time limit 1;
     </select>
 </mapper>

@@ -9,5 +9,6 @@ import java.util.List;
 public interface DevRecordMapper {
 
     DevRecord getLastDevLoc();
+    List<DevRecord> getAllDevDistribute();
 
 }

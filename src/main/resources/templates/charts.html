@@ -227,51 +227,16 @@
                                 <div class="input-group">
                                     <input type="text" value="" class="form-control" placeholder="选择设备ID"/>
                                     <span class="input-group-btn">
-											<button type="button" class="btn btn-primary">查看</button>
-										</span>
+                                        <button type="button" class="btn btn-primary">查看</button>
+                                    </span>
                                 </div>
-                                <div class="input-group">
-                                    <ul id="23b6f323b7d547e7adb9d50aa1501070" class="submenu p-tb10" style="background-color: rgb(213, 220, 237); overflow: hidden; display: block;">
-                                        <li class="offlines" data="868120177176192" name="devenlist" rel="sort0">
-                                            <input type="hidden" name="ET210-76192" status="40" speed="" activation="1527564174000" static="-2" />
-                                            <div class="vehicles-info-list bc-fff b-rd4 ">
-                                                <div name="equipmentDiv" class="vehicles-info-box p-tb15 p-lr10">
-                                                    <div class="vehicles-info-left p-r10" name="equipmentICheck">
-                                                        <span class="icheck-min">
-                                                            <div class="icheckbox" style="position: relative;">
-                                                                <input type="hidden" name="equipment" value="868120177176192" />
-                                                            </div>
-                                                        </span>
-                                                    </div>
-                                                    <div class="vehicles-icon">
-                                                        <span>
-                                                            <i class="fa fa-automobile"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="vehicles-info-body p-l10"
-                                                         style="display: table-cell;vertical-align: top; width: 1000000px;">
-                                                        <div class="vehicles-info-text"><span>ET210-76192</span><span
-                                                                class="fr" title="57分钟">离线57分钟</span></div>
-                                                        <div class="submenu-name-box clearfix">
-                                                            <i class="fa fa-heart" style="display:none" title="已关注"></i>
-                                                            <i class="fa fa-mobile" title="已绑定"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="vehicles-info-footer clearfix b-t1-eee">
-                                                    <ul>
-                                                        <li title="关注">
-                                                            <a class="follow-btn Attention" onclick="follow('0','868120177176192',this)">关注</a>
-                                                        </li>
-                                                        <li title="轨迹"><a target="_blank" onclick="replayrecord('868120177176192')" class="playback">轨迹</a></li>
-                                                        <li title="追踪"><a class="translucent tracking">追踪</a></li>
-                                                        <li title="更多"><a class="js-more-func moreOperation" onclick="moreOperation(this,'868120177176192')">更多</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                            </div>
+                            <div class="panel-body device_car">
+                                <div id="device" class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <h4 class="list-group-item-heading">设备ID：0001</h4>
+                                        <p class="list-group-item-text">运动中...</p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -417,7 +382,7 @@
 
     function addMarker(data) {
         var marker = new AMap.Marker({
-            position: [data[1] - , data[0]],
+            position: [data[1] , data[0]],
             icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
             title: 'location',
             map: map
@@ -435,7 +400,7 @@
                 addMarker(data['data'][0])
             }
         })
-     }, 35000)
+     }, 30000)
 
 </script>
 </body>
