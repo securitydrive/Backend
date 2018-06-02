@@ -1,13 +1,11 @@
 package com.example.demo.web;
 
-import com.example.demo.enity.Admin;
 import com.example.demo.enity.User;
 import com.example.demo.service.user.UserService;
 import com.example.demo.utils.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;

@@ -33,7 +33,7 @@ public class UserSecurityLogin implements UserDetailsService {
      * was actually requested..
      *
      * @param username the username identifying the user whose data is required.
-     * @return a fully populated user record (never <code>null</code>)
+     * @return a fully populated user RecordService (never <code>null</code>)
      * @throws UsernameNotFoundException if the user could not be found or the user has no
      *                                   GrantedAuthority
      */
@@ -52,7 +52,7 @@ public class UserSecurityLogin implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.login(username).getData();
         log.info("User : {}", user);
-        return new Login(username, user.getUserPwd(), true, true,
+        return new Login(username, ((User) user).getUserPassword(), true, true,
                 true, true, getGrantedAuthorities(user));
     }
 

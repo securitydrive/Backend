@@ -6,7 +6,6 @@ import com.example.demo.service.exception.UserExistsException;
 import com.example.demo.service.user.UserService;
 import com.example.demo.utils.ResultData;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -47,9 +46,8 @@ public class UserServiceImpl implements UserService {
     public ResultData register(ResultData<String, User> userResultData) {
         ResultData result = new ResultData();
         User user = userResultData.getData();
-        if (userMapper.getUserInfo(user) == null) {
+        if (userMapper.getUser(user) == null) {
             user.setUserId(UUID.nameUUIDFromBytes(user.getUserName().getBytes()).toString());
-            user.setSalt(String.valueOf(user.hashCode()));
             userMapper.register(user);
             result.setResult(user.getUserId());
             result.setResponse(HttpStatus.OK.toString());

@@ -2,28 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.enity.mapper.UserMapper" >
     <resultMap id="UserResult" type="com.example.demo.enity.User" >
-        <id property="id" column="id" />
         <result property="userId" column="user_id" />
-        <result property="salt" column="salt" />
         <result property="userName" column="user_name" />
-        <result property="userPwd" column="user_pwd" />
-        <result property="userHeadimg" column="user_headimg" />
+        <result property="userPassword" column="user_password" />
         <result property="userPhone" column="user_phone" />
-        <result property="userEmail" column="user_email" />
-        <result property="createAt" column="create_at" />
-        <result property="updateAt" column="update_at" />
+        <result property="userDeadTime" column="user_dead_time" />
     </resultMap>
     
     <select id="login" resultType="com.example.demo.enity.User">
-        select user_name, user_pwd from app_user_info where user_name=#{username}
+        select user_name, user_password from atta_user where user_name=#{username}
     </select>
 
     <insert id="register" useGeneratedKeys="true">
-        insert into app_user_info(user_id, salt, user_name, user_pwd) values ('123', '123456', #{user.userName}, #{user.userPwd})
+        insert into atta_user(user_id, user_name, user_password, user_phone) values ('123', '123456', #{user.userName}, #{user.userPassword}, #{user.userPhone})
     </insert>
 
     <select id="getUserInfo" resultType="com.example.demo.enity.User">
-        select user_name from app_user_info where user_name=#{user.userName}
+        select user_name from atta_user where user_name=#{user.userName}
     </select>
 
 </mapper>

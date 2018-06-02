@@ -5,33 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * <pre>
- *
- * </pre>
  * @author tensor
  */
 @Mapper
 public interface UserMapper {
 
-    /**
-     *
-     * @param username
-     * @return
-     */
     User login(@Param(value = "username") String username);
-
-    /**
-     *
-     * @param user
-     * @return
-     */
     Boolean register(@Param(value = "user") User user);
-
-    /**
-     *
-     * @param user
-     * @return
-     */
-    User getUserInfo(@Param(value = "user") User user);
+    User getUser(@Param(value = "user") User user);
 
 }

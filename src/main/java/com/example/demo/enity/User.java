@@ -1,24 +1,22 @@
 package com.example.demo.enity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import java.util.Date;
 
 /**
  * @author tensor
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
-    private int id;
     private String userId;
-    private String salt;
     private String userName;
-    private String userPwd;
-    private String userHeadimg;
+    private String userPassword;
     private String userPhone;
-    private String userEmail;
-    private Date createAt;
-    private Date updateAt;
+    private Date userDeadTime;
 
 }

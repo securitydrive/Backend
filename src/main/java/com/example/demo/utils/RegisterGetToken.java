@@ -60,7 +60,7 @@ public class RegisterGetToken {
                 .append("http://127.0.0.1:8080/oauth/token?username=")
                 .append(user.getUserName())
                 .append("&password=")
-                .append(user.getUserPwd())
+                .append(user.getUserPassword())
                 .append("&grant_type=password&scope=all&client_id=client&client_secret=123456");
         return sb.toString();
     }

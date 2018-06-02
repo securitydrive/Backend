@@ -1,6 +1,6 @@
 package com.example.demo.web;
 
-import com.example.demo.enity.UserCar;
+import com.example.demo.enity.Device;
 import com.example.demo.service.car.CarService;
 import com.example.demo.utils.ResultData;
 import lombok.extern.slf4j.Slf4j;
@@ -31,18 +31,18 @@ public class DataController {
     }
 
     /**
-     * 根据 user_id 以及 UserCar 对象更新对应 user_id 的 UserCar 信息
+     * 根据 user_id 以及 Device 对象更新对应 user_id 的 Device 信息
      * @param userId
-     * @param userCar
+     * @param Device
      * @return
      */
     @PostMapping(value = "/{user_id}/update/device/info")
-    public ResultData updateDeviceData(@PathVariable("user_id") String userId, @ModelAttribute UserCar userCar) {
+    public ResultData updateDeviceData(@PathVariable("user_id") String userId, @ModelAttribute Device Device) {
         return null;
     }
 
     /**
-     * 根据 user_id 与 car_id 删除对应的 UserCar
+     * 根据 user_id 与 car_id 删除对应的 Device
      * @param userId
      * @param carId
      * @return
@@ -53,13 +53,13 @@ public class DataController {
     }
 
     /**
-     * 根据 user_id 为用户增加一个 UserCar
+     * 根据 user_id 为用户增加一个 Device
      * @param userId
-     * @param userCar
+     * @param Device
      * @return
      */
     @PutMapping(value = "/{user_id}/add/device/info")
-    public ResultData addDeviceData(@PathVariable("user_id") String userId, @ModelAttribute UserCar userCar) {
+    public ResultData addDeviceData(@PathVariable("user_id") String userId, @ModelAttribute Device Device) {
         return null;
     }
 
