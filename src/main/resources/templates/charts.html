@@ -306,9 +306,9 @@
 <script src="/assets/vendor/chartist/js/chartist.min.js"></script>
 <script src="/assets/scripts/klorofil-common.js"></script>
 <!--高德地图api资源引入-->
-<script type="text/javascript"
-        src="http://webapi.amap.com/maps?v=1.4.6&amp;key=15db8247204be2b81b1b6d0c79c60429"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.6&amp;key=15db8247204be2b81b1b6d0c79c60429"></script>
 <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
 <script>
     $(function () {
         var options;
@@ -404,98 +404,39 @@
 
     var map = new AMap.Map('container', {
         resizeEnable: true,
-        zoom: 10,
+        zoom: 14,
         center: [120.343454, 30.313062]
     });
+
     AMapUI.loadUI(['control/BasicControl'], function (BasicControl) {
-
-        //添加一个缩放控件
-        map.addControl(new BasicControl.Zoom({
-            position: 'lt'
-        }));
-
-        //缩放控件，显示Zoom值
-        map.addControl(new BasicControl.Zoom({
-            position: 'lb',
-            showZoomNum: true
-        }));
-
-        //图层切换控件
         map.addControl(new BasicControl.LayerSwitcher({
             position: 'rt'
         }));
     });
 
-    AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) {
-        if (!PathSimplifier.supportCanvas) {
-            alert('当前环境不支持 Canvas！');
-            return;
-        }
-        var pathSimplifierIns = new PathSimplifier({
-            zIndex: 100,
-            autoSetFitView: false,
-            map: map, //所属的地图实例
-            getPath: function(pathData, pathIndex) {
-                return pathData.path;
-            },
-            getHoverTitle: function(pathData, pathIndex, pointIndex) {
-                if (pointIndex >= 0) {
-                    //point
-                    return pathData.name + '，点：' + pointIndex + '/' + pathData.path.length;
-                }
-                return pathData.name + '，点数量' + pathData.path.length;
-            },
-            renderOptions: {
-                renderAllPointsIfNumberBelow: 100 //绘制路线节点，如不需要可设置为-1
-            }
-        });
-        window.pathSimplifierIns = pathSimplifierIns;
-        var ID =setInterval(function () {
-            $.ajax({
-                url: '/node/single/path',
-                type: 'get',
-                success: function (data) {
-                    console.log(data)
-                    var data_path = [{
-                        name: '动态路线',
-                        path: data['data'][0]
-                    }];
-                    pathSimplifierIns.setData(data_path);
-                    //对第一条线路（即索引 0）创建一个巡航器
-                    var navg1 = pathSimplifierIns.createPathNavigator(0, {
-                        loop: true, //循环播放
-                        speed: 1000 //巡航速度，单位千米/小时
-                    });
-                    function expandPath() {
-                        function doExpand() {
-                            var cursor = navg1.getCursor().clone(), //保存巡航器的位置
-                                status = navg1.getNaviStatus();
-                            pathSimplifierIns.setData(data_path); //延展路径
-                            //重新建立一个巡航器
-                            navg1 = pathSimplifierIns.createPathNavigator(0, {
-                                //loop: true, //循环播放
-                                speed: 600000 //巡航速度，单位千米/小时
-                            });
-                            if (status !== 'stop') {
-                                navg1.start();
-                            }
-                            //恢复巡航器的位置
-                            if (cursor.idx >= 0) {
-                                navg1.moveToPoint(cursor.idx, cursor.tail);
-                            }
-                            return true;
-                        }
-                        if (doExpand()) {
-                            setTimeout(expandPath, 35000);
-                        }
-                    }
-                    navg1.start();
-                    expandPath();
-                }
-            })
-        }, 35000)
 
-    });
+    function addMarker(data) {
+        var marker = new AMap.Marker({
+            position: [data[1] - , data[0]],
+            icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+            title: 'location',
+            map: map
+        });
+        marker.setMap(map)
+        map.setZoomAndCenter(20, [data[1], data[0]])
+    }
+
+    var ID = setInterval(function () {
+        $.ajax({
+            url: '/node/single/path',
+            type: 'get',
+            success: function (data) {
+                console.log([data['data'][0][0]])
+                addMarker(data['data'][0])
+            }
+        })
+     }, 35000)
+
 </script>
 </body>
 
