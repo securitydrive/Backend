@@ -34,14 +34,16 @@ public class LoginController {
     }
 
     @PostMapping(value = "/login")
-    public ResultData login(HttpServletRequest request) {
+    public void login(HttpServletRequest request, HttpServletResponse response) {
         log.info(request.getParameter("account"));
         try {
-            request.login(request.getParameter("account"), request.getParameter("account"));
+            request.login(request.getParameter("account"), request.getParameter("password"));
+            response.sendRedirect("/atta/index");
         } catch (ServletException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return null;
     }
 
     /**

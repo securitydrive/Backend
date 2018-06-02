@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
 
@@ -40,5 +41,11 @@ public class RecordServiceImpl implements RecordService {
             list.add(devRecord.getRecordLongitude());
             return list;
         }).collect(toList()));
+    }
+
+    @Override
+    public List<Map<String, String>> getDeviceInfo() {
+        List<DevRecord> devRecords = recordMapper.getDeviceInfo();
+        return null;
     }
 }

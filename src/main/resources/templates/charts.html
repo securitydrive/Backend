@@ -221,7 +221,6 @@
                     <div class="col-md-3">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">设备选择</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="input-group">
@@ -270,6 +269,7 @@
 <script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="/assets/vendor/chartist/js/chartist.min.js"></script>
 <script src="/assets/scripts/klorofil-common.js"></script>
+<script src="/assets/vendor/atta/event.js"></script>
 <!--高德地图api资源引入-->
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.6&amp;key=15db8247204be2b81b1b6d0c79c60429"></script>
 <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
@@ -313,7 +313,7 @@
             height: "270px",
             showArea: true,
             showLine: false,
-            showPoint: false,
+            showPoint: false,http://115.159.3.213:8080/atta/node/distribute
             axisX: {
                 showGrid: false
             },
@@ -369,7 +369,7 @@
 
     var map = new AMap.Map('container', {
         resizeEnable: true,
-        zoom: 14,
+        zoom: 20,
         center: [120.343454, 30.313062]
     });
 
@@ -379,28 +379,27 @@
         }));
     });
 
-
-    function addMarker(data) {
-        var marker = new AMap.Marker({
-            position: [data[1] , data[0]],
-            icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
-            title: 'location',
-            map: map
-        });
-        marker.setMap(map)
-        map.setZoomAndCenter(20, [data[1], data[0]])
-    }
-
-    var ID = setInterval(function () {
-        $.ajax({
-            url: '/node/single/path',
-            type: 'get',
-            success: function (data) {
-                console.log([data['data'][0][0]])
-                addMarker(data['data'][0])
-            }
-        })
-     }, 30000)
+    // function addMarker(data) {
+    //     var marker = new AMap.Marker({
+    //         position: [data[1] , data[0]],
+    //         icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+    //         title: 'location',
+    //         map: map
+    //     });
+    //     marker.setMap(map)
+    //     map.setZoomAndCenter(20, [data[1], data[0]])
+    // }
+    //
+    // var ID = setInterval(function () {
+    //     $.ajax({
+    //         url: '/node/single/path',
+    //         type: 'get',
+    //         success: function (data) {
+    //             console.log([data['data'][0][0]])
+    //             addMarker(data['data'][0])
+    //         }
+    //     })
+    //  }, 20000)
 
 </script>
 </body>

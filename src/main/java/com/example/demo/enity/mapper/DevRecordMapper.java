@@ -10,5 +10,6 @@ public interface DevRecordMapper {
 
     DevRecord getLastDevLoc();
     List<DevRecord> getAllDevDistribute();
+    List<DevRecord> getDeviceInfo();
 
 }

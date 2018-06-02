@@ -46,7 +46,8 @@ public class MultiHttpSecurityConfiguration {
                     .logout()
                     .clearAuthentication(true)
                     .logoutSuccessUrl("/")
-                    .invalidateHttpSession(true);
+                    .invalidateHttpSession(true)
+            .and().csrf().disable();
         }
     }
 

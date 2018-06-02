@@ -1,7 +1,7 @@
 $('#table').bootstrapTable({
     data: [],
     method: 'post',
-    url: '/',
+    url: '/node/device/list',
     cache: true,
     contentType: 'application/json',
     queryParams: function (params) {
