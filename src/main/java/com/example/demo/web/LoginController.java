@@ -8,11 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 /**
  * <pre>
  *
@@ -27,24 +22,18 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/oauth/error")
-    public void error(HttpServletResponse response) throws IOException {
-        log.error("here");
-        response.sendRedirect("/");
-    }
-
-    @PostMapping(value = "/login")
-    public void login(HttpServletRequest request, HttpServletResponse response) {
-        log.info(request.getParameter("account"));
-        try {
-            request.login(request.getParameter("account"), request.getParameter("password"));
-            response.sendRedirect("/atta/index");
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    @PostMapping(value = "/login")
+//    public void login(HttpServletRequest request, HttpServletResponse response) {
+//        log.info(request.getParameter("account"));
+//        try {
+//            request.login(request.getParameter("account"), request.getParameter("password"));
+//            response.sendRedirect("/atta/index");
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      *
